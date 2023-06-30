@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_goHelloWorldServer_1688131784033-pr-trigger-input-set
+  identifier: Build_goHelloWorldServer_1688131784033prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Partner_Bootcamp_Yan_Luanan
+  pipeline:
+    identifier: Build_goHelloWorldServer_1688131784033
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
