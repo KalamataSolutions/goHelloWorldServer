@@ -13,7 +13,7 @@ pipeline:
           cloneCodebase: true
           platform:
             os: Windows
-            arch: Arm64
+            arch: Amd64
           runtime:
             type: Cloud
             spec: {}
@@ -68,7 +68,19 @@ pipeline:
                         type: Background
                         name: Background_1
                         identifier: Background_1
-                        spec: {}
+                        spec:
+                          shell: Powershell
+              - step:
+                  type: Run
+                  name: Test server connection
+                  identifier: Test_server_connection
+                  spec:
+                    shell: Powershell
+                    command: |-
+                      sleep 10
+                      curl localhost:8080
+                      curl localhost:8080?Hello!_I_am_a_nice_demo!
+                  description: curlimages/curl:7.73.0
   properties:
     ci:
       codebase:
