@@ -60,23 +60,15 @@ pipeline:
             spec: {}
           execution:
             steps:
-              - step:
-                  type: Background
-                  name: Background_Bootcamp
-                  identifier: Background_Bootcamp
-                  spec:
-                    shell: Powershell
-              - step:
-                  type: Run
-                  name: Test server connection
-                  identifier: Test_server_connection
-                  spec:
-                    shell: Sh
-                    command: |-
-                      sleep 10
-                      curl localhost:8080
-                      curl localhost:8080?Hello!_I_am_a_nice_demo!
-                  description: curlimages/curl:7.73.0
+              - stepGroup:
+                  name: Untitled
+                  identifier: 7e33bd7f-c645-57a7-95da-ede6a3330aae
+                  steps:
+                    - step:
+                        type: Background
+                        name: Background_1
+                        identifier: Background_1
+                        spec: {}
   properties:
     ci:
       codebase:
