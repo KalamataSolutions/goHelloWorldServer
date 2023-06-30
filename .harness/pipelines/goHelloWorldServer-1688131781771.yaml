@@ -45,6 +45,38 @@ pipeline:
                     repo: "[yljj]/[minikube]mydockerhub/ci_tutorial_repo"
                     tags:
                       - <+pipeline.sequenceId>
+    - stage:
+        name: Run integration test
+        identifier: Run_integration_test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          platform:
+            os: Windows
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Background_Bootcamp
+                  identifier: Background_Bootcamp
+                  spec:
+                    shell: Powershell
+              - step:
+                  type: Run
+                  name: Test server connection
+                  identifier: Test_server_connection
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sleep 10
+                      curl localhost:8080
+                      curl localhost:8080?Hello!_I_am_a_nice_demo!
+                  description: curlimages/curl:7.73.0
   properties:
     ci:
       codebase:
